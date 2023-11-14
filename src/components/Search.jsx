@@ -30,21 +30,28 @@ function Search({ onSearch }) {
 
     try {
       const response = await axios.get(
-        `https://api.github.com/search/users?q=${inputValue}&per_page=2`
+        `https://api.github.com/users/${inputValue}`
       );
-      const users = response.data.items;
-      setSuggestions(users);
+      const user = response.data;
+      setSuggestions([user]);
       setShowSuggestions(true);
     } catch (error) {
       console.error("Error al obtener sugerencias de usuarios:", error);
     }
   };
 
-  const handleSuggestionClick = (selectedUsername) => {
-    setUsername(selectedUsername);
-    setSuggestions([]); // Limpiar sugerencias
-    setShowSuggestions(false);
-    onSearch(selectedUsername);
+  const handleSuggestionClick = async (selectedUsername) => {
+    try {
+      const response = await axios.get(
+        `https://api.github.com/users/${selectedUsername}`
+      );
+      const user = response.data;
+      setSuggestions([]);
+      setShowSuggestions(false);
+      onSearch(username);
+    } catch (error) {
+      console.error("Error al obtener datos del usuario:", error);
+    }
   };
 
   const handleFormSubmit = (e) => {
@@ -68,7 +75,7 @@ function Search({ onSearch }) {
         onChange={handleInputChange}
       />
       {showSuggestions && suggestions.length > 0 && (
-        <div className="absolute top-16 right-0 flex flex-col gap-2">
+        <div className="absolute top-20 right-0 flex flex-col gap-2">
           {suggestions.map((user) => (
             <div
               key={user.id}
@@ -81,7 +88,9 @@ function Search({ onSearch }) {
                 className="w-14 md:w-16 h-14 md:h-16 rounded-xl"
               />
               <div className="flex flex-col gap-2">
-                <span className="text-lg font-semibold">{user.login}</span>
+                <span className="text-lg font-semibold">
+                  {user.login || "No name available"}
+                </span>
                 <span className="text-xs text-[#96a3b6]">
                   {user.bio || "No bio available"}
                 </span>
