@@ -11,7 +11,6 @@ function ReposCard({ username }) {
         const response = await axios.get(
           `https://api.github.com/users/${username}/repos`
         );
-        // Obtener los primeros 4 repositorios
         const firstFourRepos = response.data.slice(0, 4);
         setReposData(firstFourRepos);
       } catch (error) {
@@ -31,7 +30,7 @@ function ReposCard({ username }) {
 
   return (
     <div className="flex flex-col place-items-center">
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 sm:gap-x-4 md:gap-x-10 gap-y-8 mt-5">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 sm:gap-x-4 lg:gap-x-10 gap-y-8 mt-5">
         {reposData.map((repo) => (
           <a
             key={repo.id}
@@ -40,13 +39,13 @@ function ReposCard({ username }) {
             rel="noopener noreferrer"
             className="text-no-underline"
           >
-            <div className="bg-gradient-to-r from-[#111729] to-[#1D1B48] w-[24rem] sm:w-[22rem] lg:w-[28rem] h-36 py-4 px-4 md:px-6 rounded-xl shadow-md flex flex-col gap-2 hover:scale-105 duration-300 transition-all place-content-center">
+            <div className="bg-gradient-to-r from-[#111729] to-[#1D1B48] w-[24rem] sm:w-[21.4rem] lg:w-[28rem] h-36 py-4 px-4 sm:px-3 md:px-6 rounded-xl shadow-md flex flex-col gap-2 hover:scale-105 duration-300 transition-all place-content-center">
               <h2 className="text-lg font-semibold">{repo.name}</h2>
               <p className="text-[#96A3B6] text-sm line-clamp-2 pb-3">
                 {repo.description || "No description available"}
               </p>
 
-              <div className="flex gap-3 items-center">
+              <div className="flex gap-3 sm:gap-2 items-center">
                 {repo.license ? (
                   <div className="flex items-center gap-1">
                     <img src="./Chield_alt.svg" alt="chield icon image" />
