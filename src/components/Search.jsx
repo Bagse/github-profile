@@ -61,7 +61,7 @@ function Search({ onSearch }) {
 
   return (
     <form
-      className="absolute top-4 md:top-10 bg-[#20293A] rounded-lg p-4 w-[370px] lg:w-[550px] flex items-center gap-2 focus-within:outline focus-within:outline-[3px] focus-within:outline-[#3662E3] shadow-md"
+      className="absolute top-4 md:top-10 bg-[#20293A] rounded-lg p-4 w-[350px] lg:w-[550px] flex items-center gap-2 focus-within:outline focus-within:outline-[3px] focus-within:outline-[#3662E3] shadow-md"
       onSubmit={handleFormSubmit}
       ref={inputRef}
     >
@@ -91,7 +91,7 @@ function Search({ onSearch }) {
                 <span className="text-lg font-semibold">
                   {user.login || "No name available"}
                 </span>
-                <span className="text-xs text-[#96a3b6]">
+                <span className="text-xs text-[#96a3b6] line-clamp-2">
                   {user.bio || "No bio available"}
                 </span>
               </div>

@@ -34,7 +34,7 @@ function App() {
         <Search onSearch={handleSearch} />
       </div>
 
-      <section className="px-3 sm:px-3 lg:px-72 pb-10">
+      <section className="px-3 sm:px-3 lg:px-72 px pb-10 xl:px-72">
         <div className="flex gap-5 lg:gap-16 pb-16 sm:pb-2 lg:pb-0">
           <div className="w-[115px] h-[115px] relative">
             <img

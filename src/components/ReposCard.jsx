@@ -39,7 +39,7 @@ function ReposCard({ username }) {
             rel="noopener noreferrer"
             className="text-no-underline"
           >
-            <div className="bg-gradient-to-r from-[#111729] to-[#1D1B48] w-[24rem] sm:w-[21.4rem] lg:w-[28rem] h-36 py-4 px-4 sm:px-3 md:px-6 rounded-xl shadow-md flex flex-col gap-2 hover:scale-105 duration-300 transition-all place-content-center">
+            <div className="bg-gradient-to-r from-[#111729] to-[#1D1B48] w-[22rem] sm:w-[21.4rem] lg:w-[28rem] h-36 py-4 px-2 sm:px-3 md:px-6 rounded-xl shadow-md flex flex-col gap-2 md:hover:scale-105 duration-300 transition-all place-content-center">
               <h2 className="text-lg font-semibold">{repo.name}</h2>
               <p className="text-[#96A3B6] text-sm line-clamp-2 pb-3">
                 {repo.description || "No description available"}
